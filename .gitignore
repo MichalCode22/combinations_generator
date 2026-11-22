@@ -1,0 +1,28 @@
+# .NET build output
+**/bin/
+**/obj/
+**/publish/
+.vs/
+*.user
+*.suo
+
+# Node and Angular
+**/node_modules/
+**/dist/
+**/.angular/cache/
+**/out-tsc/
+**/coverage/
+
+# Test output
+**/test-results/
+**/playwright-report/
+*.trx
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+
+# Operating system files
+.DS_Store
+Thumbs.db

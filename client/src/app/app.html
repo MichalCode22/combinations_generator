@@ -1,0 +1,21 @@
+<main class="app-shell">
+  <header class="page-header">
+    <span class="eyebrow">מחולל</span>
+    <h1>מחולל קומבינציות</h1>
+    <p>גלו את כל הסידורים האפשריים, בסדר לקסיקוגרפי.</p>
+  </header>
+
+  <section class="panel" aria-live="polite">
+    @switch (store.state().mode) {
+      @case ('start') {
+        <app-start />
+      }
+      @case ('single') {
+        <app-single-view />
+      }
+      @case ('all') {
+        <app-all-view />
+      }
+    }
+  </section>
+</main>

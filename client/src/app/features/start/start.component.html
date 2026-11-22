@@ -1,0 +1,26 @@
+<form (ngSubmit)="submit()" novalidate>
+  <label for="permutation-size">כמה מספרים לסדר?</label>
+  <p class="hint" id="size-hint">בחרו מספר שלם בין 1 ל־20.</p>
+  <input
+    id="permutation-size"
+    name="n"
+    type="text"
+    inputmode="numeric"
+    autocomplete="off"
+    aria-describedby="size-hint size-error"
+    [ngModel]="nInput()"
+    (ngModelChange)="nInput.set($event)"
+    (input)="onInput($event)"
+    (paste)="onPaste($event)"
+    (keydown)="onKeydown($event)"
+  />
+  @if (validationMessage(); as message) {
+    <p class="validation" id="size-error" role="alert">{{ message }}</p>
+  }
+  @if (store.state().error; as error) {
+    <p class="error" role="alert">{{ error }}</p>
+  }
+  <button class="primary" type="submit" [disabled]="store.state().busy || validationMessage() !== null">
+    {{ store.state().busy ? 'מחשב…' : 'התחלה' }}
+  </button>
+</form>

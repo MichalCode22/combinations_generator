@@ -1,0 +1,73 @@
+:host {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.heading-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+h2,
+.heading-row p {
+  margin: 0;
+}
+
+h2 {
+  color: var(--color-ink);
+}
+
+.heading-row p,
+.page-summary {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.permutation-list {
+  display: grid;
+  gap: 0.55rem;
+  max-height: 55vh;
+  margin: 0;
+  padding-inline-start: 2.25rem;
+  overflow: auto;
+}
+
+.permutation-list li {
+  padding: 0.75rem;
+  border-radius: 0.6rem;
+  background: var(--color-soft);
+}
+
+.permutation-list li span {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+}
+
+.permutation-list li strong {
+  color: var(--color-ink);
+  overflow-wrap: anywhere;
+}
+
+.notice,
+.error {
+  margin: 0;
+  text-align: center;
+}
+
+.notice {
+  color: var(--color-accent);
+}
+
+.error {
+  color: var(--color-danger);
+}
+
+@media (max-width: 35rem) {
+  .heading-row {
+    align-items: flex-start;
+  }
+}

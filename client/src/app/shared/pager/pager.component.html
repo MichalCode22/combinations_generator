@@ -1,0 +1,51 @@
+<nav class="pager" aria-label="ניווט בין עמודים" dir="ltr">
+  <div class="page-controls">
+    <button type="button" class="secondary" [disabled]="busy || isFirstPage()" (click)="goFirst()">ראשון</button>
+    <button type="button" class="secondary" [disabled]="busy || isFirstPage()" (click)="goPrevious()">הקודם</button>
+    @for (item of pageItems(); track $index) {
+      @if (item.kind === 'page') {
+        <button
+          type="button"
+          class="secondary page-number"
+          [class.active]="item.page === page"
+          [attr.aria-current]="item.page === page ? 'page' : null"
+          [disabled]="busy || item.page === page"
+          (click)="pageChange.emit(item.page)"
+        >{{ item.page }}</button>
+      } @else {
+        <span class="ellipsis" aria-hidden="true">…</span>
+      }
+    }
+    <button type="button" class="secondary" [disabled]="busy || isLastPage()" (click)="goNext()">הבא</button>
+    <button type="button" class="secondary" [disabled]="busy || isLastPage()" (click)="goLast()">אחרון</button>
+  </div>
+
+  <div class="pager-options" dir="rtl">
+    <label>
+      מספר פריטים בעמוד
+      <select [value]="pageSize" [disabled]="busy" (change)="onPageSizeChange($event)">
+        @for (size of pageSizes; track size) {
+          <option [value]="size">{{ size }}</option>
+        }
+      </select>
+    </label>
+
+    <form (submit)="submitPage($event)">
+      <label for="go-to-page">מעבר לעמוד</label>
+      <input
+        id="go-to-page"
+        type="text"
+        inputmode="numeric"
+        autocomplete="off"
+        [value]="pageInput()"
+        [disabled]="busy || !hasPages()"
+        [attr.aria-invalid]="invalidPage()"
+        (input)="onPageInput($event)"
+      >
+      <button type="submit" class="secondary" [disabled]="busy || !hasPages()">עבור</button>
+      @if (invalidPage()) {
+        <span class="validation" role="alert">יש להזין עמוד בין 1 ל־{{ totalPages }}.</span>
+      }
+    </form>
+  </div>
+</nav>

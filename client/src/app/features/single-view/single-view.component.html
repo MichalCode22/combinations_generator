@@ -1,0 +1,36 @@
+@if (store.state(); as state) {
+  <section class="summary">
+    <p>סה"כ האפשרויות לסדר {{ state.n }} מספרים בשורה הוא: <strong>{{ state.total | bigintThousands }}</strong></p>
+  </section>
+
+  @if (state.currentIndex !== null) {
+    <div class="permutation-card">
+      <span class="index">קומבינציה מספר {{ state.currentIndex | bigintThousands }} – </span>
+      <strong class="permutation" dir="ltr">[{{ state.current.join(',') }}]</strong>
+    </div>
+  } @else {
+    <p class="empty-state">לחצו על "הבא" כדי להציג את הקומבינציה הראשונה.</p>
+  }
+
+  @if (notice(); as message) {
+    <p class="notice" role="status">{{ message }}</p>
+  }
+  @if (state.error; as error) {
+    <p class="error" role="alert">{{ error }}</p>
+  }
+
+  <div class="actions">
+    <button type="button" class="secondary" [disabled]="state.busy" (click)="reset()">איפוס</button>
+    <button type="button" class="primary" [disabled]="state.busy || !state.hasMore" (click)="next()">
+      {{ state.busy ? 'מחשב…' : 'הבא' }}
+    </button>
+    <button
+      type="button"
+      class="secondary"
+      [disabled]="state.busy || !state.hasMore"
+      (click)="enterAll()"
+    >
+      כל הקומבינציות
+    </button>
+  </div>
+}

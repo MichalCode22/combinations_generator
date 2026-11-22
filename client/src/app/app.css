@@ -1,0 +1,41 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.app-shell {
+  width: min(100% - 2rem, 48rem);
+  margin: 0 auto;
+  padding: clamp(2rem, 8vh, 5rem) 0;
+}
+
+.page-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.eyebrow {
+  color: var(--color-accent);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+h1 {
+  margin: 0.4rem 0;
+  color: var(--color-ink);
+  font-size: clamp(2rem, 7vw, 3.25rem);
+}
+
+.page-header p {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.panel {
+  padding: clamp(1.25rem, 5vw, 2.5rem);
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  background: var(--color-surface);
+  box-shadow: 0 1.25rem 3.5rem rgb(24 43 70 / 8%);
+}

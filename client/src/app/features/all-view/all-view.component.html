@@ -1,0 +1,35 @@
+@if (store.state(); as state) {
+  <div class="heading-row">
+    <div>
+      <h2>כל הקומבינציות</h2>
+      <p>סה"כ {{ state.total | bigintThousands }} אפשרויות</p>
+    </div>
+    <button class="secondary" type="button" [disabled]="state.busy" (click)="back()">חזור</button>
+  </div>
+
+  @if (state.items.length > 0) {
+    <ol class="permutation-list">
+      @for (item of state.items; track item.index) {
+        <li>
+          <span>קומבינציה מספר {{ item.index | bigintThousands }}</span>
+          <strong dir="ltr">[{{ item.permutation.join(', ') }}]</strong>
+        </li>
+      }
+    </ol>
+    <p class="page-summary">עמוד {{ state.page | bigintThousands }} מתוך {{ state.totalPages | bigintThousands }}</p>
+    <app-pager
+      [page]="state.page"
+      [totalPages]="state.totalPages"
+      [pageSize]="state.pageSize"
+      [busy]="state.busy"
+      (pageChange)="loadPage($event)"
+      (pageSizeChange)="changePageSize($event)"
+    />
+  } @else {
+    <p class="notice" role="status">{{ state.message ?? 'אין יותר קומבינציות' }}</p>
+  }
+
+  @if (state.error; as error) {
+    <p class="error" role="alert">{{ error }}</p>
+  }
+}

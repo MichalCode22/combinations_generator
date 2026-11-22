@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/CombinationsGenerator.Api/CombinationsGenerator.Api.csproj" />
+    <Project Path="src/CombinationsGenerator.Application/CombinationsGenerator.Application.csproj" />
+    <Project Path="src/CombinationsGenerator.Domain/CombinationsGenerator.Domain.csproj" />
+    <Project Path="src/CombinationsGenerator.Infrastructure/CombinationsGenerator.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/CombinationsGenerator.Api.Tests/CombinationsGenerator.Api.Tests.csproj" />
+    <Project Path="tests/CombinationsGenerator.Application.Tests/CombinationsGenerator.Application.Tests.csproj" />
+    <Project Path="tests/CombinationsGenerator.Domain.Tests/CombinationsGenerator.Domain.Tests.csproj" />
+  </Folder>
+</Solution>
